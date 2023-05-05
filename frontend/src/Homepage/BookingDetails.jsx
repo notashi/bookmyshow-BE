@@ -2,6 +2,7 @@ import React from 'react'
 
 function BookingDetails({lastBookingDetails}) {
   const {movie,time,seats}=lastBookingDetails
+  // console.log(lastBookingDetails)
   
 
 

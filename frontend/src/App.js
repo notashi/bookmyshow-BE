@@ -12,7 +12,7 @@ const URL = 'http://localhost:5000/v1/api/'
 function App() {
 
   const [lastBookingDetails, setLastBookingDetails] = useState([]);
-
+  const [bools, setBools] = useState(false)
   const [body, setBody] = useState({
     movie: "",
     time: "",
@@ -40,6 +40,9 @@ function App() {
     } catch (error) {
       console.log(error)
     }
+    finally {
+      lastBooking()
+    }
 
   }
 
@@ -48,22 +51,25 @@ function App() {
 
     try {
       let response = await axios.get(`${URL}/getdata`)
-      console.log(response.data)
+      // console.log(response.data)
       setLastBookingDetails(response.data)
     } catch (error) {
       console.log(error)
     }
+    finally {
+      setBools(true)
+    }
+
 
   }
 
+
   useEffect(() => {
+
     lastBooking()
-  }, [])
+  }, [bools])
 
 
-  // useEffect(() => {
-  //   lastBooking
-  // },)
 
   return (
     <>
@@ -73,6 +79,7 @@ function App() {
       <MovieTime timeData={timeData} />
       <MovieSeats />
       <span className="button">
+        {console.log(lastBookingDetails)}
         {/* insert onsubmit below */}
         <form onSubmit={createData}>
           <button type="submit" class="btn btn-outline-success">Book now</button>
