@@ -18,14 +18,7 @@ route.post("/selectmovie", async (req, res, next) => {
         movie: req.body.movie,
         time: req.body.time,
         seats: req.body.seats
-        // seats: {
-        //     // A1: req.body.seats[0],
-        //     // A2: req.body.seats[1],
-        //     // A3: req.body.seats[2],
-        //     // A4: req.body.seats[3],
-        //     // D1: req.body.seats[4],
-        //     // D2: req.body.seats[5],
-        // }
+
     }).save()
     req.perviousMovieId = data._id
     // console.log(req)
@@ -44,7 +37,7 @@ route.delete("/delete", async (req, res) => {
 })
 
 //
-route.get("/", async (req, res) => {
+route.get("/getdata", async (req, res) => {
 
     try {
         const lastDetails = await movie.findOne({}, null, { sort: { $natural: -1 } });

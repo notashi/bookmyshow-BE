@@ -1,4 +1,3 @@
-const { stack } = require("../routes/route");
 
 const errorHandler = (err, req, res, next) => {
     // log the error to console
