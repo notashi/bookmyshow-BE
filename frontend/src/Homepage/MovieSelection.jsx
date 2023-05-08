@@ -30,14 +30,12 @@ const MovieTimeSelection = (props) => {
               style={{
                 padding: '10px 20px',
                 borderRadius: 10,
-                backgroundColor:
-                  selectedMovie === option.name ? 'red' : 'lightgray',
+                backgroundColor:selectedMovie === option.name ? 'red' : 'lightgray',
                 color: selectedMovie === option.name ? 'white' : 'black',
                 border: 'none',
                 outline: 'none',
               }}
-              onClick={() => handleClick(option.name)}
-            >
+              onClick={() => handleClick(option.name)}>
               {option.name}
             </button>
           ))}

@@ -6,9 +6,9 @@ function Navbar() {
   return (
 
     <div  >
-      <nav class="navbar navbar-light" id='nav' >
-         <a class="navbar-brand" href="/" className='header'>
-           <img src={logo} width="400"  class=" align-top" alt="error" />
+      <nav className="navbar navbar-light" id='nav' >
+         <a className="navbar-brand" href="/">
+           <img src={logo} width="400"  className=" align-top" alt="error" />
         </a>
       </nav>
 
