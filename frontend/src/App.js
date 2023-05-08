@@ -15,7 +15,8 @@ function App() {
 
   const [lastBookingDetails, setLastBookingDetails] = useState([]);
   const [bools, setBools] = useState(false)
-
+  const [isSubmit, setisSubmit] = useState(true)//rename this 
+  const [movieTime, setMovieTime] = useState(true)
   const [body, setBody] = useState({
     movie: "",
     time: "",
@@ -72,10 +73,10 @@ function App() {
 
 
 
-
-  const createData = async (e) => {
+  ///submit data
+  const createData = async (event) => {
     console.log(body)
-    e.preventDefault()
+    event.preventDefault()
     if (!body.movie) {
       toast.error("Please select a movie.", { autoClose: 1000 });
       return;
@@ -92,6 +93,7 @@ function App() {
     try {
       await axios.post(`${URL}/selectmovie`, body)
       toast.success(successToast());
+      // setisSubmit(false)
       setBody({
         movie: "",
         time: "",
@@ -102,7 +104,8 @@ function App() {
     }
     finally {
       lastBooking()
-
+      setisSubmit(false)
+      setMovieTime(false)
 
     }
     setBody({
@@ -124,6 +127,7 @@ function App() {
     }
     finally {
       setBools(true)
+
     }
 
 
@@ -154,19 +158,26 @@ function App() {
   return (
     <div id="bgBC">
       <Navbar />
-      <MovieSelection moviedata={moviedata} />
-      <BookingDetails lastBookingDetails={lastBookingDetails} clearData={clearData} />
-      <MovieTime timeData={timeData} />
-      <MovieSeats seatData={seatData} />
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <MovieSelection moviedata={moviedata} isSubmit={isSubmit} setisSubmit={setisSubmit} />
+            <MovieTime timeData={timeData} movieTime={movieTime} setMovieTime={setMovieTime} setisSubmit={setisSubmit} />
+            <MovieSeats seatData={seatData} isSubmit={isSubmit} />
+          </div>
+          <div class="col-md-6">
+            <BookingDetails lastBookingDetails={lastBookingDetails} clearData={clearData} />
+          </div>
+        </div>
+      </div>
       <ToastContainer />
       <span className="button">
-        {/* {console.log(body)} */}
-        {/* insert onsubmit below */}
         <form onSubmit={createData}>
-          <button type="submit" className="btn btn-outline-success">Book now</button>
+          <button type="submit" className="btn btn-outline-success btn-lg">Book now</button>
         </form>
       </span>
     </div>
+
   );
 }
 

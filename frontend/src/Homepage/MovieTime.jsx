@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 
 const MovieTime = (props) => {
   const [selectedTime, setSelectedTime] = useState(null);
+ 
 
   const handleClick = (time) => {
     setSelectedTime(time);
     props.timeData(time)
+    props.setMovieTime(true)
+
   };
 
+
+  console.log(props.isSubmit+ " this is isSubmit of movieTime")
   const timeOptions = [
     { id: 1, time: '10:00 AM' },
     { id: 2, time: '2:00 PM' },
@@ -16,31 +21,28 @@ const MovieTime = (props) => {
   ];
 
   return (
-    <span className='tmkc'>
-      <span className='tmkb'>
-        <h2>Select Movie Time:</h2>
-        <span style={{ display: 'flex', gap: 10 }}>
-          {timeOptions.map((props) => (
-            <button
-              key={props.id}
-              style={{
-                padding: '10px 20px',
-                borderRadius: 10,
-                backgroundColor:
-                  selectedTime === props.time ? 'red' : 'lightgray',
-                color: selectedTime === props.time ? 'white' : 'black',
-                border: 'none',
-                outline: 'none',
-              }}
-              onClick={() => handleClick(props.time)}
-            >
-              {props.time}
-            </button>
-          ))}
-        </span>
-      </span>
-    </span>
-  );
+<span className='tmkc'>
+  <span className='tmkb aliceblue'>
+    <h2>Select Movie Time:</h2>
+    <div className='d-flex flex-wrap gap-5 '>
+      {timeOptions.map((option) => (
+        <button
+          key={option.id}
+          className={`btn ${selectedTime === option.time && props.movieTime ? 'btn-danger' : 'btn-light'}`}
+          style={{ borderRadius: 10,width:150, height:50}}
+          onClick={() => handleClick(option.time)}
+        >
+          <div className='fs-4'>{option.time}</div>
+        </button>
+      ))}
+    </div>
+  </span>
+</span>
+
+
+
+
+  )
 };
 
 export default MovieTime;
