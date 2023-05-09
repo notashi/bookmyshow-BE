@@ -12,7 +12,7 @@ const MovieTime = (props) => {
   };
 
 
-  console.log(props.isSubmit+ " this is isSubmit of movieTime")
+ 
   const timeOptions = [
     { id: 1, time: '10:00 AM' },
     { id: 2, time: '2:00 PM' },

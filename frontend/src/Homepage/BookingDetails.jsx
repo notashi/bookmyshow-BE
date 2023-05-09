@@ -46,6 +46,7 @@ return (
         <div className="card-body">
           {seats && seats.length ? (
             <div>
+              <h2 className='fw-bold'> Last Booking Details</h2>
               <h3>{`Movie: ${movie}`}</h3>
               <h3>{`Time: ${time}`}</h3>
               <h3>Seats</h3>

@@ -17,6 +17,7 @@ function App() {
   const [bools, setBools] = useState(false)
   const [isSubmit, setisSubmit] = useState(true)//rename this 
   const [movieTime, setMovieTime] = useState(true)
+  // const [seatbool, setSeatbool] = useState(true)
   const [body, setBody] = useState({
     movie: "",
     time: "",
@@ -163,7 +164,7 @@ function App() {
           <div class="col-md-6">
             <MovieSelection moviedata={moviedata} isSubmit={isSubmit} setisSubmit={setisSubmit} />
             <MovieTime timeData={timeData} movieTime={movieTime} setMovieTime={setMovieTime} setisSubmit={setisSubmit} />
-            <MovieSeats seatData={seatData} isSubmit={isSubmit} />
+            <MovieSeats seatData={seatData} isSubmit={isSubmit} setisSubmit={setisSubmit} />
           </div>
           <div class="col-md-6">
             <BookingDetails lastBookingDetails={lastBookingDetails} clearData={clearData} />
